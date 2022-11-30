@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleScript : MonoBehaviour
+public class HealthCollectible : MonoBehaviour
 {
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other)
@@ -11,7 +11,12 @@ public class CollectibleScript : MonoBehaviour
 
         if (controller != null)
         {
-            controller.ChangeHealth(1);
-            Destroy(gameObject);
+            if (controller.health < controller.maxHealth)
+            {
+
+                controller.ChangeHealth(1);
+                Destroy(gameObject);
+            }
         }
     }
+}
